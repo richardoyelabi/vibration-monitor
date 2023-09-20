@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Vibration Analysis</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="bootstrap.min.css" />
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="d-flex align-items-center justify-content-center container-fluid p-5">
+    <div class="card">
+
+      <div class="title text-center p-3">
+        <h2>Machine Maintenance</h2>
+      </div>
+
+      <divid="">
+        <div class="">
+          <div class="card-title">
+          </div>
+          <div class="card-body">
+            <div>
+              <p>Vibration: <span id="vibValue">...</span></p>
+              <p>Temperature: <span id="tempValue">...</span></p>
+            </div>
+          </div>
+        </div>
+        </divid=>
+    </div>
+  </div>
+
+  <script>
+    let data;
+    let vibCon = document.getElementById("vibValue");
+    let tempCon = document.getElementById("tempValue");
+
+    function getData() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          data = JSON.parse(this.responseText);
+          console.log(data);
+          vibCon.innerHTML = data.vib;
+          tempCon.innerHTML = data.temp + "&deg;C";
+        }
+      };
+      xhttp.open("GET", "/getData", true);
+      xhttp.send();
+    }
+
+    setInterval(function () {
+      getData();
+    }, 500);
+
+  </script>
+</body>
+
+</html>

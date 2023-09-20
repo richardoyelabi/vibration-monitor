@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+
+background-color: whitesmoke;
+}
+h2{
+  color: #9a0000;
+}
+p{
+  color: brown;
+  font-size: 20px;
+}
+@media only screen and (max-width: 768px) {
+}
